@@ -5,7 +5,12 @@ from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 
 class CalcGridLayout(GridLayout):
-    pass
+    def calculate(self, calculation):
+        if calculation:
+            try:
+                self.display.text = str(eval(calculation))
+            except SyntaxError:
+                self.display.text = "Syntax Error"
 
 class CalculatorApp(App):
     def build(self):
